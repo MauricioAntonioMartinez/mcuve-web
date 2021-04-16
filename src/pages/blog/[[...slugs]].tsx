@@ -1,11 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
+import xw from "xwind";
 import { PostItem } from "../../components/post/PostItem";
 import { getContentPost, getPaths } from "../../lib/posts";
 import { Post } from "../../types";
 
 export default function Blogs({ post }: { post: Post }) {
-  return <PostItem post={post} />;
+  return (
+    <section css={xw`container mr-auto`}>
+      <PostItem post={post} />
+    </section>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
