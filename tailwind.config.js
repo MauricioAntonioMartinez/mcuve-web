@@ -15,6 +15,9 @@ module.exports = {
         danger: "#F2622D",
         warning: "#F9F4D4",
       },
+      inset: {
+        "-16": "-4rem",
+      },
     },
   },
   variants: {

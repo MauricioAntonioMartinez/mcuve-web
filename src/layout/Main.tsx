@@ -6,7 +6,7 @@ export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <section>
       <Header />
-      <main css={xw`pt-16`}>{children}</main>
+      <main css={xw`pt-14`}>{children}</main>
     </section>
   );
 };
