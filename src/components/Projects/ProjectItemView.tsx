@@ -3,11 +3,14 @@ import React from "react";
 import xw from "xwind";
 import { Description } from "../landing/Description";
 
-interface Props {}
+interface Props {
+  onClick(): void;
+}
 
-export const ProjectItemView = (props: Props) => {
+export const ProjectItemView = ({ onClick }: Props) => {
   return (
     <div
+      onClick={onClick}
       css={xw` max-w-md p-4 border-2 bg-white shadow-md flex flex-col divide-y-2 rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl`}
     >
       <div css={xw`relative bg-cover bg-center  w-full  h-40`}>

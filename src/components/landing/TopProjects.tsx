@@ -1,12 +1,20 @@
 import Image from "next/image";
 import React from "react";
 import xw from "xwind";
+import { useModal } from "../../store/modals";
+import { ProjectItem } from "../Projects/ProjectItem";
 import { ProjectItemView } from "../Projects/ProjectItemView";
 import { Description } from "./Description";
 
 interface Props {}
 
 export const TopProjects = (props: Props) => {
+  const { showModal } = useModal();
+
+  const showProjectHandler = () => {
+    showModal(ProjectItem);
+  };
+
   return (
     <section
       css={xw`container grid grid-cols-2   border-2 rounded-l-lg overflow-hidden`}
@@ -32,10 +40,10 @@ export const TopProjects = (props: Props) => {
       </div>
 
       <div css={xw` grid grid-cols-2 gap-6 p-8 `}>
-        <ProjectItemView />
-        <ProjectItemView />
-        <ProjectItemView />
-        <ProjectItemView />
+        <ProjectItemView onClick={showProjectHandler} />
+        <ProjectItemView onClick={showProjectHandler} />
+        <ProjectItemView onClick={showProjectHandler} />
+        <ProjectItemView onClick={showProjectHandler} />
       </div>
     </section>
   );
