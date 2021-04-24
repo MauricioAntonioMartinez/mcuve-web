@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import xw from "xwind";
+import { Footer } from "./Footer";
 import { Header } from "./Header";
 
 export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
@@ -7,6 +8,7 @@ export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     <section>
       <Header />
       <main css={xw`pt-14`}>{children}</main>
+      <Footer />
     </section>
   );
 };

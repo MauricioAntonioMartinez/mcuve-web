@@ -17,7 +17,7 @@ export const TopProjects = (props: Props) => {
 
   return (
     <section
-      css={xw`container grid grid-cols-2   border-2 rounded-l-lg overflow-hidden`}
+      css={xw`container grid grid-cols-2   border-2 rounded-l-lg overflow-hidden mb-10`}
     >
       <div css={xw`relative   space-y-12 `}>
         <div

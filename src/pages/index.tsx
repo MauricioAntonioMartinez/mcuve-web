@@ -1,11 +1,17 @@
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import React from "react";
 import xw from "xwind";
 import { Description } from "../components/landing/Description";
+import { ExperienceView } from "../components/landing/Experience";
 import { LandingHead } from "../components/landing/LandingHead";
 import { Learning } from "../components/landing/Learning";
 import { TopProjects } from "../components/landing/TopProjects";
+import { Event, EXPERIENCE } from "../constants/Experience";
 
-export default function Index() {
+export default function Index({
+  events,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  console.log(events);
   return (
     <section>
       <LandingHead />
@@ -21,19 +27,30 @@ export default function Index() {
         <div css={xw`container`}>
           <div css={xw`w-full h-0.5 bg-black opacity-30`}></div>
 
-          <h2 css={xw`text-6xl text-center font-bold mb-16`}>
+          <h2 css={xw`text-6xl text-center font-bold mb-16 mt-6`}>
             What do i know?
           </h2>
 
           <Learning />
         </div>
         <TopProjects />
-        {/* <Modal>
-          <ProjectItem />
-        </Modal> */}
 
-        <div css={xw`h-32 bg-warning`}></div>
+        <h2 css={xw`text-6xl text-center font-bold mb-16 mt-6`}>
+          What about my experience?
+        </h2>
+
+        <div css={xw`container w-full h-0.5 bg-black opacity-30`}></div>
+
+        <ExperienceView events={events} />
       </section>
     </section>
   );
 }
+
+export const getStaticProps: GetStaticProps<{ events: Event[] }> = async () => {
+  return {
+    props: {
+      events: EXPERIENCE,
+    },
+  };
+};
