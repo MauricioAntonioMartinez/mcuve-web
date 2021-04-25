@@ -17,9 +17,9 @@ export const TopProjects = (props: Props) => {
 
   return (
     <section
-      css={xw`container grid grid-cols-2   border-2 rounded-l-lg overflow-hidden mb-10`}
+      css={xw`container grid sm:grid-cols-1 xl:grid-cols-2   border-2 rounded-l-lg overflow-hidden mb-10`}
     >
-      <div css={xw`relative   space-y-12 `}>
+      <div css={xw`relative   space-y-12  sm:flex-none md:h-80 xl:h-full `}>
         <div
           css={xw`absolute w-full h-full bg-black  p-8 z-10 bg-opacity-60 flex flex-col justify-end`}
         >
@@ -39,7 +39,7 @@ export const TopProjects = (props: Props) => {
         />
       </div>
 
-      <div css={xw` grid grid-cols-2 gap-6 p-8 `}>
+      <div css={xw` grid sm:grid-cols-1 md:grid-cols-2  gap-6 p-8 `}>
         <ProjectItemView onClick={showProjectHandler} />
         <ProjectItemView onClick={showProjectHandler} />
         <ProjectItemView onClick={showProjectHandler} />

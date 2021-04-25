@@ -64,20 +64,12 @@ export const ExperienceView = ({ events }: Props) => {
   };
 
   return (
-    <section css={xw`w-full grid grid-cols-11  container pt-12`}>
-      <div
-        css={xw`col-span-5 flex flex-col space-y-48  items-end mt-16 relative`}
-      >
+    <section css={xw`w-full grid grid-cols-11  container pt-12 `}>
+      <div css={xw`col-span-5 flex flex-col w-full items-end mt-16  `}>
         {leftEvents.map((e, idx) => (
           <div
             style={{
-              top: `${getTopDistance(e.start)}rem`,
-              left: "0",
-              display: "flex",
-              justifyItems: "flex-end",
-              alignItems: "flex-end",
-              position: "absolute",
-              width: "100%",
+              marginTop: `${getTopDistance(e.start) * 0.8}rem`,
             }}
             key={`Event-Left-${idx}`}
           >
@@ -114,11 +106,19 @@ export const ExperienceView = ({ events }: Props) => {
       </div>
       <div css={xw`col-span-5 flex flex-col  space-y-48 mt-48 `}>
         {rightEvents.map((e, idx) => (
-          <ExperienceItem
-            event={e}
-            direction="right"
-            key={`Event-Right-${idx}`}
-          />
+          <div
+            style={{
+              marginTop: `${getTopDistance(e.start)}rem`,
+            }}
+            css={xw`w-full  flex items-center items-center`}
+            key={`Event-Left-${idx}`}
+          >
+            <ExperienceItem
+              event={e}
+              direction="right"
+              key={`Event-Right-${idx}`}
+            />
+          </div>
         ))}
       </div>
     </section>

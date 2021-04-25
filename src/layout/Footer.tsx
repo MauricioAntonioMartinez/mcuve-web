@@ -1,3 +1,10 @@
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import xw from "xwind";
 import { McuveIcon } from "../components/ui/McuveIcon";
@@ -38,11 +45,23 @@ export const Footer = (props: Props) => {
         {buildLinks()}
         {buildLinks()}
       </div>
-      <div css={xw`bg-primary h-12 w-full`}>
-        <div css={xw`mr-auto`}>
-          <span>Twitter</span>
-          <span>Instagram</span>
-        </div>
+      <div
+        css={xw`bg-primary h-12 w-full flex items-center justify-end space-x-1 p-3`}
+      >
+        <FontAwesomeIcon
+          icon={faInstagram}
+          size="2x"
+          href="https://www.instagram.com/mcuvee"
+          cursor="pointer"
+        />
+        <FontAwesomeIcon
+          icon={faTwitter}
+          size="2x"
+          href="https://www.twitter.com/_mcuve"
+          cursor="pointer"
+        />
+        <FontAwesomeIcon icon={faFacebook} size="2x" href="" cursor="pointer" />
+        <FontAwesomeIcon icon={faLinkedin} size="2x" href="" cursor="pointer" />
       </div>
     </section>
   );

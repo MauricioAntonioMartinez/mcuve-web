@@ -10,7 +10,7 @@ interface Props {
 
 export const ExperienceItem = ({ direction, event }: Props) => {
   return (
-    <div css={xw`flex w-1/2   `}>
+    <div css={xw`flex sm:w-1/2 md:w-full  `}>
       {direction === "right" && (
         <>
           <div css={xw`w-24 border-b-2 border-gray-400 h-0 self-center`}></div>
@@ -19,7 +19,7 @@ export const ExperienceItem = ({ direction, event }: Props) => {
       )}
       <div
         css={[
-          xw`p-8 shadow-lg  border-gray-400 `,
+          xw`p-8 shadow-lg bg-warning  border-gray-400 hover:scale-110  transform transition duration-200 ease-in-out `,
           direction === "right" ? xw`border-r-2` : xw`border-l-2`,
         ]}
       >
@@ -31,7 +31,11 @@ export const ExperienceItem = ({ direction, event }: Props) => {
             css={xw`rounded-xl `}
           />
         </div>
-        <p css={xw`text-light`}>{event.excerpt}</p>
+        <div css={xw`flex flex-col items-end space-y-2`}>
+          <h1 css={xw`font-bold text-3xl self-start`}>Title</h1>
+          <p css={xw`text-light`}>{event.excerpt}</p>
+          <span css={xw`text-gray-400`}>{event.start}</span>
+        </div>
       </div>
       {direction === "left" && (
         <>
