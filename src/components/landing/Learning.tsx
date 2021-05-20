@@ -1,18 +1,17 @@
 import React from "react";
 import xw from "xwind";
-import { Card } from "../ui/Card";
+import { TechLearnItem } from "../items/TechLearnItem";
 
-interface Props {}
+interface Props {
+  learning: Record<string, string[]>;
+}
 
 export const Learning = (props: Props) => {
   return (
     <section css={xw`p-4 grid sm:grid-cols-1 md:grid-cols-3 gap-6 gap-y-16`}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {Object.entries(props.learning).map(([field, items]) => (
+        <TechLearnItem title={field} tech={items} />
+      ))}
     </section>
   );
 };

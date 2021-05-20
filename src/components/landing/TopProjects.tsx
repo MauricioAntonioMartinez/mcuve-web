@@ -2,17 +2,33 @@ import Image from "next/image";
 import React from "react";
 import xw from "xwind";
 import { useModal } from "../../store/modals";
+import { Project } from "../../types";
 import { ProjectItem } from "../Projects/ProjectItem";
 import { ProjectItemView } from "../Projects/ProjectItemView";
 import { Description } from "./Description";
 
-interface Props {}
+interface Props {
+  projects: Project[];
+}
 
-export const TopProjects = (props: Props) => {
+export const TopProjects = ({ projects }: Props) => {
   const { showModal } = useModal();
 
   const showProjectHandler = () => {
-    showModal(ProjectItem);
+    showModal(() => (
+      <ProjectItem
+        project={{
+          preview: "https://placeimg.com/480/480/tech",
+          image: "https://placeimg.com/480/480/tech",
+          name: "Mertion",
+          repo: "https://mcuve.com",
+          excerpt: "",
+          isTop: true,
+          tech: [{ url: "test", icon: "test", name: "Java" }],
+          description: "This app was ment to be for the fitness people",
+        }}
+      />
+    ));
   };
 
   return (
@@ -23,12 +39,11 @@ export const TopProjects = (props: Props) => {
         <div
           css={xw`absolute w-full h-full bg-black  p-8 z-10 bg-opacity-60 flex flex-col justify-end`}
         >
-          <h2 css={xw`font-bold text-7xl text-primary `}>My Top Projects</h2>
-          <Description css={xw`text-2xl text-white `}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
-            provident expedita quasi libero similique repellendus soluta eaque
-            excepturi aut. Numquam incidunt quae, mollitia quod consectetur quis
-            maiores laudantium similique consequuntur.
+          <h2 css={xw`font-bold text-7xl text-light `}>Facta non verba.</h2>
+          <Description css={xw`text-2xl text-white italic `}>
+            "Creating is the most important thing regardless the theory you
+            know, your work describe your learning it shows how well are you
+            prepared and how much effort you are willing to put in your code"
           </Description>
         </div>
         <Image
@@ -40,10 +55,14 @@ export const TopProjects = (props: Props) => {
       </div>
 
       <div css={xw` grid sm:grid-cols-1 md:grid-cols-2  gap-6 p-8 `}>
-        <ProjectItemView onClick={showProjectHandler} />
-        <ProjectItemView onClick={showProjectHandler} />
-        <ProjectItemView onClick={showProjectHandler} />
-        <ProjectItemView onClick={showProjectHandler} />
+        {projects.map((p) => (
+          <ProjectItemView
+            onClick={showProjectHandler}
+            title={p.name}
+            image={p.image}
+            excerpt={p.excerpt}
+          />
+        ))}
       </div>
     </section>
   );

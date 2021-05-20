@@ -5,9 +5,9 @@ import { Header } from "./Header";
 
 export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
-    <section>
+    <section css={xw`flex flex-col min-h-screen`}>
       <Header />
-      <main css={xw`pt-14`}>{children}</main>
+      <main css={xw`pt-14 flex-1`}>{children}</main>
       <Footer />
     </section>
   );

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import xw from "xwind";
+import { Project } from "../../types";
 
-interface Props {}
+interface Props {
+  project: Project;
+}
 
-export const ProjectItem = (props: Props) => {
+export const ProjectItem = ({ project }: Props) => {
+  const [tab, setTab] = useState(1);
+
   return (
     <div css={xw`flex flex-col lg:flex-row`}>
       <div
@@ -19,71 +24,49 @@ export const ProjectItem = (props: Props) => {
         <div
           css={xw`relative flex justify-end lg:justify-start flex-wrap text-white text-xl font-bold m-4`}
         >
-          <div css={xw`bg-green-500 px-4 py-1 rounded`}>Special Offer</div>
+          <div css={xw`bg-green-500 px-4 py-1 rounded`}>{project.name}</div>
         </div>
       </div>
       <div css={xw`w-full`}>
         <div css={xw`p-8`}>
-          <div css={xw`flex justify-between items-start`}>
-            <h3 css={xw`text-xl font-bold mb-8`}>A Dummy Title</h3>
-            <a css={xw`text-gray-400 hover:text-gray-800 p-1`}>
-              <svg
-                css={xw`w-10 h-10`}
-                fill={`none`}
-                stroke={`currentColor`}
-                viewBox={`0 0 24 24`}
-                xmlns={`http://www.w3.org/2000/svg`}
-              >
-                <path
-                  stroke-linecap={`round`}
-                  stroke-linejoin={`round`}
-                  stroke-width={`1`}
-                  d={`M6 18L18 6M6 6l12 12`}
-                ></path>
-              </svg>
-            </a>
-          </div>
           <div css={xw`relative`}>
             <header css={xw`flex items-end text-sm`}>
               <button
-                css={xw`border border-b-0 px-3 py-1 text-sm focus:outline-none rounded-tl-md`}
+                onClick={() => setTab(1)}
+                css={[
+                  xw`border border-b-0 px-3 py-1  text-sm focus:outline-none rounded-tl-md `,
+                  tab === 1 ? xw`bg-primary text-white` : xw``,
+                ]}
               >
                 Description
               </button>
-              <button css={xw`border border-b-0 px-3 py-1 focus:outline-none`}>
-                Terms
-              </button>
+
               <button
-                css={xw`border border-b-0 px-3 py-1 focus:outline-none rounded-tr-md`}
+                onClick={() => setTab(2)}
+                css={[
+                  xw`border border-b-0 px-3 py-1  text-sm focus:outline-none rounded-tl-md `,
+                  tab === 2 ? xw`bg-primary text-white` : xw``,
+                ]}
               >
-                Contact
+                Technologies
               </button>
             </header>
             <div
               css={xw`border p-2 h-48 overflow-y-auto rounded-b-xl rounded-tr-xl`}
               id={`tabs-contents`}
             >
-              <div x-show={`activeTab===1`}>
-                <p css={xw`text-xs text-gray-500 `}>
-                  This is the text for Tab1. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </div>
-              <div x-show={`activeTab===2`}>
-                <p css={xw`text-xs text-gray-500 `}>
-                  This is the text for Tab2. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                  nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id
-                  est laborum.
-                </p>
-              </div>
+              {tab === 1 && (
+                <div>
+                  <p css={xw`text-xs text-gray-500 `}>{project.description}</p>
+                </div>
+              )}
+              {tab === 2 && (
+                <div>
+                  <p css={xw`text-xs text-gray-500 `}>
+                    {project.tech.map((t) => t)}
+                  </p>
+                </div>
+              )}
               <div x-show={`activeTab===3`}>
                 <p css={xw`text-xs text-gray-500 `}>
                   This is the text for Tab 3. Lorem ipsum dolor sit amet,
@@ -99,11 +82,8 @@ export const ProjectItem = (props: Props) => {
             <a
               css={xw`text-blue-700 border border-blue-300 hover:border-blue-700 px-4 py-1 rounded`}
             >
-              Website
+              Give it a look
             </a>
-            <div css={xw`text-red-500 font-normal text-xs px-4 py-1 rounded`}>
-              Report
-            </div>
           </div>
         </div>
       </div>

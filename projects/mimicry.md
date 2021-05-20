@@ -1,15 +1,16 @@
 ---
-name: "Mertion"
+name: "Mimicry"
 date: "2022-10-16"
-image: /projects/mertion-preview.jpg
-preview: /projects/mertion-preview.jpg
-excerpt: A social media like twitter focused in gym lovers.
-description: If you want to publish image of your workout or videos were you share with your friends how grate your are doing in your gym yuo can publish in mertion rather than instagram,  this social media focus on gym lovers.
-repo: https://github.com/MauricioAntonioMartinez/mertion
+image: /projects/mimicry-preview.jpg
+preview: /projects/mimicry-preview.jpg
+excerpt: Share content between your phone and your pc without limitations
+description: Every time that you need send data to your phone is a mess an more if you needed as quickly as possible, with mimicry you can share any file,clipboard,contacts etc. without the need of sending whatsapps messages.
+repo: https://github.com/MauricioAntonioMartinez/mimicry
 tech:
-  - typescript
-  - apollo
-  - redis
+  - react-native
+  - postgres
+  - express
+  - socketio
 isTop: true
 ---
 

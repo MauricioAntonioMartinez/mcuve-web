@@ -15,14 +15,7 @@ const currentYear = new Date().toLocaleDateString("en-US", {
   year: "numeric",
 });
 
-const YEARS = ["2019", "2020", "2021"];
-
-// 1 month  = 1rem
-//  3x12   36 months
-// 2019-apr
-// 0-4
-// 2020-apr
-// 1*12 +  4
+const YEARS = ["2020", "2021"];
 
 const MONTHS = [
   "Jan",
@@ -38,9 +31,6 @@ const MONTHS = [
   "Nov",
   "Dec",
 ];
-
-//  2020-01 2020-04
-// 2021-
 
 export const ExperienceView = ({ events }: Props) => {
   const leftEvents: Event[] = [];

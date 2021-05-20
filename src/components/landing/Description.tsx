@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import xw, { cx } from "xwind";
 
-const base = xw`text-gray-700 break-all text-xl`;
+const base = xw`text-gray-700 break-words text-xl`;
 
 export const Description: React.FC<PropsWithChildren<{ className?: any }>> = ({
   children,

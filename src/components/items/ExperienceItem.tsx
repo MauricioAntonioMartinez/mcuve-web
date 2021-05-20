@@ -32,7 +32,7 @@ export const ExperienceItem = ({ direction, event }: Props) => {
           />
         </div>
         <div css={xw`flex flex-col items-end space-y-2`}>
-          <h1 css={xw`font-bold text-3xl self-start`}>Title</h1>
+          <h1 css={xw`font-bold text-3xl self-start`}>{event.title}</h1>
           <p css={xw`text-light`}>{event.excerpt}</p>
           <span css={xw`text-gray-400`}>{event.start}</span>
         </div>

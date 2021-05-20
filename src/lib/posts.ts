@@ -9,8 +9,8 @@ const getPostUrls = (fatherPath: string, files = [] as string[]): string => {
   const stat = fs.statSync(fatherPath);
   if (stat.isDirectory()) {
     const items = fs.readdirSync(fatherPath);
-    const urls = items.map(
-      (item) => getPostUrls(path.join(fatherPath, item), files) //.forEach((p) => files.push(p))
+    const urls = items.map((item) =>
+      getPostUrls(path.join(fatherPath, item), files)
     );
     return urls.join(" ");
   }
