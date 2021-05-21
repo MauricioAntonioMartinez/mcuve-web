@@ -7,10 +7,9 @@ excerpt: Sample application of how blockchain works in basic example
 description: With the big popularity of bitcoin many folks wants to understand how the blockchain  system really works with this implementation i focus on deliver a basic grasp of that functionality.
 repo: https://github.com/MauricioAntonioMartinez/coinjs
 tech:
-  - react-native
-  - postgres
+  - react
+  - postgreSQL
   - express
-  - socketio
 isTop: true
 ---
 

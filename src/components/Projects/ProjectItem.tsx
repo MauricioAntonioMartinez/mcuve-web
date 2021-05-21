@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import xw from "xwind";
+import { techs } from "../../constants/TechLearning";
 import { Project } from "../../types";
 
 interface Props {
@@ -10,12 +11,12 @@ export const ProjectItem = ({ project }: Props) => {
   const [tab, setTab] = useState(1);
 
   return (
-    <div css={xw`flex flex-col lg:flex-row`}>
+    <div css={xw`flex flex-col lg:flex-row w-full`}>
       <div
         css={xw`relative h-64 sm:h-80 w-full lg:h-auto lg:w-1/3 xl:w-2/5 flex-none`}
       >
         <img
-          src={`https://placeimg.com/480/480/tech`}
+          src={project.preview}
           css={xw`absolute inset-0 h-full w-full object-cover`}
         />
         <span
@@ -24,7 +25,7 @@ export const ProjectItem = ({ project }: Props) => {
         <div
           css={xw`relative flex justify-end lg:justify-start flex-wrap text-white text-xl font-bold m-4`}
         >
-          <div css={xw`bg-green-500 px-4 py-1 rounded`}>{project.name}</div>
+          <div css={xw`bg-light px-4 py-1 rounded`}>{project.name}</div>
         </div>
       </div>
       <div css={xw`w-full`}>
@@ -57,32 +58,38 @@ export const ProjectItem = ({ project }: Props) => {
             >
               {tab === 1 && (
                 <div>
-                  <p css={xw`text-xs text-gray-500 `}>{project.description}</p>
+                  <p css={xw`text-lg text-gray-500 `}>{project.description}</p>
                 </div>
               )}
               {tab === 2 && (
-                <div>
-                  <p css={xw`text-xs text-gray-500 `}>
-                    {project.tech.map((t) => t)}
-                  </p>
+                <div css={xw`flex justify-center items-center h-full`}>
+                  {project.tech.map((t) => (
+                    <a
+                      href={techs[t].url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      css={xw`w-40 h-40 rounded-full bg-white border-2 border-primary  -ml-5 hover:shadow-lg`}
+                    >
+                      <img
+                        css={xw`w-40 h-40 object-fill rounded-full`}
+                        src={techs[t].icon}
+                      />
+                    </a>
+                  ))}
                 </div>
               )}
-              <div x-show={`activeTab===3`}>
-                <p css={xw`text-xs text-gray-500 `}>
-                  This is the text for Tab 3. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua.
-                </p>
-              </div>
             </div>
           </div>
           <div
             css={xw`flex justify-end items-center text-sm font-bold mt-8 gap-4`}
           >
             <a
-              css={xw`text-blue-700 border border-blue-300 hover:border-blue-700 px-4 py-1 rounded`}
+              href={project.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              css={xw`text-primary border border-primary hover:border-light hover:text-light px-4 py-1 rounded cursor-pointer`}
             >
-              Give it a look
+              Repo
             </a>
           </div>
         </div>

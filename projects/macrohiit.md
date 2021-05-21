@@ -7,9 +7,8 @@ excerpt: Track your meal intake, register your macros an set goals.
 description: Every gym fan should track his meals to ensure progress, macrohiit makes it easy by providing you a set of tools to track your macros and set targets every day.
 repo: https://github.com/MauricioAntonioMartinez/MacroHitt
 tech:
-  - typescript
-  - apollo
-  - redis
+  - dart
+  - flutter
 isTop: true
 ---
 

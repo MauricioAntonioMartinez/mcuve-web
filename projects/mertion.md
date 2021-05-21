@@ -10,6 +10,8 @@ tech:
   - typescript
   - apollo
   - redis
+  - react
+  - postgreSQL
 isTop: true
 ---
 

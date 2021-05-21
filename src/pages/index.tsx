@@ -9,7 +9,7 @@ import { TopProjects } from "../components/landing/TopProjects";
 import { Event, EXPERIENCE } from "../constants/Experience";
 import { learning } from "../constants/TechLearning";
 import { getTopProjects } from "../lib/projects";
-import { Project } from "../types";
+import { Project, Tech } from "../types";
 
 export default function Index({
   events,
@@ -24,10 +24,12 @@ export default function Index({
       >
         <Description css={xw`w-1/2`}>
           Hi my name is Mauricio, i am a fullstack developer with focus on
-          backend technologies. Create resilient,well architected and scalable
+          backend technologies. Create resilient, well architected and scalable
           applications is my main focus, design systems taking care of all error
-          cases , having the most efficient workflow using the best IT resources
-          are just describers of my work.
+          cases, having the most efficient workflow using the best and adequate
+          IT resources are just describers of my work. If you want to contact me
+          feel freely in doing it, i am open and hungry to help you build your
+          business.
         </Description>
         <div css={xw`container`}>
           <div css={xw`w-full h-0.5 bg-black opacity-30`}></div>
@@ -54,10 +56,10 @@ export default function Index({
 
 export const getStaticProps: GetStaticProps<{
   events: Event[];
-  learning: Record<string, string[]>;
+  learning: Record<string, Tech[]>;
   projects: Project[];
 }> = async () => {
-  const projects = await getTopProjects();
+  const projects = getTopProjects();
   return {
     props: {
       events: EXPERIENCE,

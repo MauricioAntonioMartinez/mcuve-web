@@ -14,21 +14,8 @@ interface Props {
 export const TopProjects = ({ projects }: Props) => {
   const { showModal } = useModal();
 
-  const showProjectHandler = () => {
-    showModal(() => (
-      <ProjectItem
-        project={{
-          preview: "https://placeimg.com/480/480/tech",
-          image: "https://placeimg.com/480/480/tech",
-          name: "Mertion",
-          repo: "https://mcuve.com",
-          excerpt: "",
-          isTop: true,
-          tech: [{ url: "test", icon: "test", name: "Java" }],
-          description: "This app was ment to be for the fitness people",
-        }}
-      />
-    ));
+  const showProjectHandler = (project: Project) => {
+    showModal(() => <ProjectItem project={project} />);
   };
 
   return (
@@ -57,10 +44,11 @@ export const TopProjects = ({ projects }: Props) => {
       <div css={xw` grid sm:grid-cols-1 md:grid-cols-2  gap-6 p-8 `}>
         {projects.map((p) => (
           <ProjectItemView
-            onClick={showProjectHandler}
+            onClick={() => showProjectHandler(p)}
             title={p.name}
             image={p.image}
             excerpt={p.excerpt}
+            key={p.name}
           />
         ))}
       </div>

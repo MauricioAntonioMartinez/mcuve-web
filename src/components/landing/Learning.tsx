@@ -1,9 +1,10 @@
 import React from "react";
 import xw from "xwind";
+import { Tech } from "../../types";
 import { TechLearnItem } from "../items/TechLearnItem";
 
 interface Props {
-  learning: Record<string, string[]>;
+  learning: Record<string, Tech[]>;
 }
 
 export const Learning = (props: Props) => {
