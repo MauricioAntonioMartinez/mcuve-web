@@ -10,6 +10,7 @@ tech:
   - react
   - postgreSQL
   - express
+  - typescript
 isTop: true
 ---
 

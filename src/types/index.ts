@@ -22,3 +22,9 @@ export type Project = {
   image: string;
   preview: string;
 };
+
+export type Certification = {
+  title: string;
+  url: string;
+  image: string;
+};

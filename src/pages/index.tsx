@@ -1,19 +1,22 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import React from "react";
 import xw from "xwind";
+import { Certifications } from "../components/landing/Certifications";
 import { Description } from "../components/landing/Description";
 import { ExperienceView } from "../components/landing/Experience";
 import { LandingHead } from "../components/landing/LandingHead";
 import { Learning } from "../components/landing/Learning";
 import { TopProjects } from "../components/landing/TopProjects";
+import { certifications } from "../constants/Certifications";
 import { Event, EXPERIENCE } from "../constants/Experience";
 import { learning } from "../constants/TechLearning";
 import { getTopProjects } from "../lib/projects";
-import { Project, Tech } from "../types";
+import { Certification, Project, Tech } from "../types";
 
 export default function Index({
   events,
   learning,
+  certifications,
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -49,6 +52,12 @@ export default function Index({
         <div css={xw`container w-full h-0.5 bg-black opacity-30`}></div>
 
         <ExperienceView events={events} />
+
+        <h2 css={xw`text-6xl text-center font-bold mb-16 mt-6`}>
+          Certifications
+        </h2>
+
+        <Certifications certifications={certifications} />
       </section>
     </section>
   );
@@ -58,6 +67,7 @@ export const getStaticProps: GetStaticProps<{
   events: Event[];
   learning: Record<string, Tech[]>;
   projects: Project[];
+  certifications: Certification[];
 }> = async () => {
   const projects = getTopProjects();
   return {
@@ -65,6 +75,7 @@ export const getStaticProps: GetStaticProps<{
       events: EXPERIENCE,
       learning,
       projects,
+      certifications,
     },
   };
 };

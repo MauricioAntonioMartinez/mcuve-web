@@ -17,21 +17,22 @@ export const EXPERIENCE: Event[] = [
   {
     title: "Wabbit Solutions",
     excerpt:
-      "First freelance work solar panel quotation administration dashboard.",
+      "First freelance work ,solar panel and quotation administration dashboard.",
     start: "2020-06-01",
     end: "20219-05-23",
     image: "",
   },
   {
     title: "ITM Service",
-    excerpt: "Project manger, itm systems for automation due to the pandemic.",
+    excerpt:
+      "Project Manger at ITM, for  web applications to automate common process.",
     start: "2020-07-01",
     end: "20219-05-23",
     image: "",
   },
   {
-    title: "Wabbit Solutions",
-    excerpt: "Freelance system, architects resources administration dashboard.",
+    title: "MacroHiit",
+    excerpt: "My first mobile application made in flutter.",
     start: "2020-08-01",
     end: "20219-05-23",
     image: "",
@@ -39,9 +40,17 @@ export const EXPERIENCE: Event[] = [
 
   {
     title: "Hypercube",
-    excerpt: "When i was here everything went really well.",
+    excerpt:
+      "Managing spending and giving recommendation's across different vendors like AWS,GCP,Azure ",
     start: "2021-01-15",
     end: "20219-05-23",
+    image: "",
+  },
+  {
+    title: "AWS - Cloud Practitioner",
+    excerpt: "Acquired my first aws certification.",
+    start: "2021-01-15",
+    end: "2021-01-15",
     image: "",
   },
 ];

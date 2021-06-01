@@ -59,7 +59,7 @@ export const ExperienceView = ({ events }: Props) => {
         {leftEvents.map((e, idx) => (
           <div
             style={{
-              marginTop: `${getTopDistance(e.start) * 0.8}rem`,
+              marginTop: `${getTopDistance(e.start) * 0.5}rem`,
             }}
             key={`Event-Left-${idx}`}
           >
@@ -98,7 +98,7 @@ export const ExperienceView = ({ events }: Props) => {
         {rightEvents.map((e, idx) => (
           <div
             style={{
-              marginTop: `${getTopDistance(e.start)}rem`,
+              marginTop: `${getTopDistance(e.start) * 0.5}rem`,
             }}
             css={xw`w-full  flex items-center items-center`}
             key={`Event-Left-${idx}`}
