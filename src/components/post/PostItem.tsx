@@ -1,5 +1,5 @@
-// import Image from "next/image";
-// import React from "react";
+import React from "react";
+import ReactMarkDown from "react-markdown";
 import xw from "xwind";
 import { Post } from "../../types";
 
@@ -8,15 +8,40 @@ interface Props {
 }
 
 export const PostItem = ({ post }: Props) => {
+  const { title, image, path, content } = post;
+
+  // const customRenders:ReactMarkdownOptions = {
+
+  //   paragraph({ children }:any) {
+  //     if (children[0].type === "image") {
+  //       const image = children[0];
+  //       return (
+  //         <div className={classes.image}>
+  //           <Image
+  //             src={`/images/posts/${path}/${image.src}`}
+  //             alt={image.alt}
+  //             width={600}
+  //             height={300}
+  //           />
+  //         </div>
+  //       );
+  //     }
+  //     return <p> {children}</p>;
+  //   },
+  //   code({ language, value }:any) {
+  //     return (
+  //       <SyntaxHighLighter
+  //         style={atomDark}
+  //         language={language}
+  //         children={value}
+  //       />
+  //     );
+  //   },
+  // };
+
   return (
-    <div
-      css={xw`container content-around border-2 shadow-md  border-gray-500 flex flex-col`}
-    >
-      {/* <Image src={post.coverImage} width={200} height={200} /> */}
-      <div css={xw("p-2 justify-items-start space-y-2")}>
-        <div css={xw`text-lg text-blue-600`}>{post.title}</div>
-        <p>{post.excerpt}</p>
-      </div>
-    </div>
+    <article css={xw`container pt-8`}>
+      <ReactMarkDown>{content}</ReactMarkDown>
+    </article>
   );
 };

@@ -33,7 +33,7 @@ export const getAllPosts = () => {
     const content = fs.readFileSync(path.join(postsPath, `${p}.md`), "utf-8");
     const post = gray(content);
 
-    return { ...post.data, content: post.content } as Post;
+    return { ...post.data, content: post.content, path: `/blog${p}` } as Post;
   });
   return posts;
 };

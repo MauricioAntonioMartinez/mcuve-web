@@ -9,6 +9,7 @@ export type Post = {
   excerpt: string;
   coverImage: string;
   title: string;
+  path: string;
   content: string;
 };
 
