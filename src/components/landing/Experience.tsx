@@ -88,10 +88,10 @@ export const ExperienceView = ({ events }: Props) => {
           </>
         ))}
         <div
-          css={xw`absolute w-24 bg-primary h-24 transform rotate-45 -bottom-8 border-b-2 border-r-2 border-warning z-10`}
+          css={xw`absolute w-24 bg-primary h-24 transform rotate-45 -bottom-16 border-b-2 border-r-2 border-warning z-10`}
         ></div>
         <div
-          css={xw`absolute w-24 bg-danger h-24 transform rotate-45 -bottom-12 z-0`}
+          css={xw`absolute w-24 bg-danger h-24 transform rotate-45 -bottom-16 z-0`}
         ></div>
       </div>
       <div css={xw`col-span-5 flex flex-col  space-y-48 mt-48 `}>

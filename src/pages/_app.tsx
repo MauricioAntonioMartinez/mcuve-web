@@ -3,6 +3,7 @@ import { AppProps } from "next/dist/next-server/lib/router/router";
 import Head from "next/head";
 import React from "react";
 import xw from "xwind";
+import "../css/tailwind.css";
 import { Layout } from "../layout/Main";
 import ModalProvider from "../store/modals";
 

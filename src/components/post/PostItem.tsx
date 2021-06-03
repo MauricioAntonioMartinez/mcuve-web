@@ -1,5 +1,4 @@
 import React from "react";
-import ReactMarkDown from "react-markdown";
 import xw from "xwind";
 import { Post } from "../../types";
 
@@ -41,7 +40,7 @@ export const PostItem = ({ post }: Props) => {
 
   return (
     <article css={xw`container pt-8`}>
-      <ReactMarkDown>{content}</ReactMarkDown>
+      {/* <ReactMarkDown>{content}</ReactMarkDown> */}
     </article>
   );
 };

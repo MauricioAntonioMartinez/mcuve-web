@@ -7,4 +7,8 @@ date: "2021-04-16"
 
 # Create a k8s cluster in a raspberry pi
 
+- 1
+- 2
+- 3
+
 `test 1`
