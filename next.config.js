@@ -25,18 +25,18 @@ module.exports = withBundleAnalyzer({
     modern: true,
   },
   webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.(svg|png|jpe?g|gif|mp4)$/i,
-      use: [
-        {
-          loader: "file-loader",
-          options: {
-            publicPath: "/_next",
-            name: "static/media/[name].[hash].[ext]",
-          },
-        },
-      ],
-    });
+    // config.module.rules.push({
+    //   test: /\.(svg|png|jpe?g|gif|mp4)$/i,
+    //   use: [
+    //     {
+    //       loader: "file-loader",
+    //       options: {
+    //         publicPath: "/_next",
+    //         name: "static/media/[name].[hash].[ext]",
+    //       },
+    //     },
+    //   ],
+    // });
 
     const mdx = [
       options.defaultLoaders.babel,
@@ -87,8 +87,8 @@ module.exports = withBundleAnalyzer({
             ...mdx,
             createLoader(function (src) {
               const content = [
-                'import Post from "../../components/Post"',
-                'export { getStaticProps } from "../../getStaticProps"',
+                'import  Post  from "@/components/post/Post"',
+                'export { getStaticProps } from "@/lib/posts"',
                 src,
                 "export default Post",
               ].join("\n");
@@ -110,15 +110,15 @@ module.exports = withBundleAnalyzer({
       ],
     });
 
-    if (!options.dev && options.isServer) {
-      const originalEntry = config.entry;
+    // if (!options.dev && options.isServer) {
+    //   const originalEntry = config.entry;
 
-      config.entry = async () => {
-        const entries = { ...(await originalEntry()) };
-        entries["./scripts/build-rss.js"] = "./scripts/build-rss.js";
-        return entries;
-      };
-    }
+    //   config.entry = async () => {
+    //     const entries = { ...(await originalEntry()) };
+    //     entries["./scripts/build-rss.js"] = "./scripts/build-rss.js";
+    //     return entries;
+    //   };
+    // }
 
     return config;
   },

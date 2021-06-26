@@ -41,7 +41,7 @@ export const Footer = (props: Props) => {
               <h1 css={xw`text-4xl `}>{res.title}</h1>
               <ul>
                 {res.links.map((l) => (
-                  <li>
+                  <li key={l}>
                     <a>{l}</a>
                   </li>
                 ))}
@@ -54,19 +54,33 @@ export const Footer = (props: Props) => {
         css={xw`bg-primary h-12 w-full flex items-center justify-end space-x-1 p-3`}
       >
         <FontAwesomeIcon
+          key={1}
           icon={faInstagram}
           size="2x"
           href="https://www.instagram.com/mcuvee"
           cursor="pointer"
         />
         <FontAwesomeIcon
+          key={2}
           icon={faTwitter}
           size="2x"
           href="https://www.twitter.com/_mcuve"
           cursor="pointer"
         />
-        <FontAwesomeIcon icon={faFacebook} size="2x" href="" cursor="pointer" />
-        <FontAwesomeIcon icon={faLinkedin} size="2x" href="" cursor="pointer" />
+        <FontAwesomeIcon
+          key={3}
+          icon={faFacebook}
+          size="2x"
+          href=""
+          cursor="pointer"
+        />
+        <FontAwesomeIcon
+          key={4}
+          icon={faLinkedin}
+          size="2x"
+          href=""
+          cursor="pointer"
+        />
       </div>
     </section>
   );

@@ -11,4 +11,9 @@ export const certifications: Certification[] = [
     image: "/badges/developer-associate.png",
     url: "https://www.credly.com/earner/earned/badge/4058a122-579a-42ec-ada6-9da08cf8962e",
   },
+  {
+    title: "AWS - Solutions Architect Associate",
+    image: "/badges/solutions-architect.png",
+    url: "https://www.credly.com/earner/earned/badge/17af2f91-7601-4ed1-ac81-74ccadee4fc4",
+  },
 ];

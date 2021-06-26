@@ -2,14 +2,14 @@ import { MDXProvider } from "@mdx-js/react";
 import { Feed } from "feed";
 import fs from "fs";
 import ReactDOMServer from "react-dom/server";
-import { mdxComponents } from "../src/components/Post";
-import { getAllPosts } from "../src/getAllPostPreviews";
+import { mdxComponents } from "../src/components/post/Post";
+import { getAllPosts } from "../src/lib/getAllPostPreviews";
 
-const siteUrl = "https://blog.tailwindcss.com";
+const siteUrl = "https://www.mcuve.com";
 
 const feed = new Feed({
-  title: "Tailwind CSS Blog",
-  description: "All the latest Tailwind CSS news, straight from the team.",
+  title: "Mcuve Portfolio",
+  description: "Know me and my projects, i also have a blog.",
   id: siteUrl,
   link: siteUrl,
   language: "en",
@@ -22,8 +22,8 @@ const feed = new Feed({
     atom: `${siteUrl}/atom.xml`,
   },
   author: {
-    name: "Adam Wathan",
-    link: "https://twitter.com/@adamwathan",
+    name: "Mauricio Antonio Martinez Martinez",
+    link: "https://twitter.com/@mcuve",
   },
 });
 

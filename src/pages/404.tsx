@@ -4,7 +4,7 @@ import xw from "xwind";
 
 interface Props {}
 
-export default (props: Props) => {
+const _404 = (props: Props) => {
   return (
     <article css={xw`w-full h-auto flex-1 flex justify-center items-center`}>
       <Image alt="404" src="/404.svg" width={500} height={500} />
@@ -15,3 +15,5 @@ export default (props: Props) => {
     </article>
   );
 };
+
+export default _404;

@@ -10,6 +10,7 @@ export type Post = {
   coverImage: string;
   title: string;
   path: string;
+  date: string;
   content: string;
 };
 
