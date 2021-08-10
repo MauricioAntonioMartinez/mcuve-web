@@ -2,7 +2,6 @@ import { Header } from "@/components/ui/Header";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { Post } from "@/types";
 import { MDXProvider, MDXProviderComponentsProp } from "@mdx-js/react";
-import { useRouter } from "next/router";
 import React, { PropsWithChildren } from "react";
 import tinytime from "tinytime";
 import xw from "xwind";
@@ -36,8 +35,7 @@ const PostContent: React.FC<PropsWithChildren<Props>> = ({
   post,
   children,
 }) => {
-  const router = useRouter();
-
+  console.log(post);
   return (
     <>
       <Header
@@ -46,9 +44,8 @@ const PostContent: React.FC<PropsWithChildren<Props>> = ({
         image="/assets/cover-posts.jpg"
       />
       <SectionContainer>
-        <main>
-          <article className="py-16">
-            {/* <Head>
+        <article className="py-16 w-full m-auto">
+          {/* <Head>
               <title>{meta.title} – mcuve</title>
               <meta name="twitter:site" content="@mcuvee" />
               <meta name="twitter:creator" content="@mcuvee" />
@@ -78,33 +75,32 @@ const PostContent: React.FC<PropsWithChildren<Props>> = ({
               />
               <meta name="description" content={meta.description}></meta>
             </Head> */}
-            <header className="pt-6 xl:pb-10">
-              <div
-                css={xw`space-y-1 text-center flex flex-col items-center justify-center`}
-              >
-                <McuveIcon />
-                <dl className="space-y-10">
-                  <div>
-                    <dt className="sr-only">Published on</dt>
-                    <dd className="text-base leading-6 font-medium text-gray-500">
-                      <time dateTime={post.date}>
-                        {postDateTemplate.render(new Date(post.date))}
-                      </time>
-                    </dd>
-                  </div>
-                </dl>
+          <header className="pt-6 xl:pb-10">
+            <div
+              css={xw`space-y-1 text-center flex flex-col items-center justify-center`}
+            >
+              <McuveIcon />
+              <dl className="space-y-10">
                 <div>
-                  <PageTitle>{post.title}</PageTitle>
+                  <dt className="sr-only">Published on</dt>
+                  <dd className="text-base leading-6 font-medium text-gray-500">
+                    <time dateTime={post.date}>
+                      {postDateTemplate.render(new Date(post.date))}
+                    </time>
+                  </dd>
                 </div>
-              </div>
-            </header>
-            <div className="mt-12">
-              <div className="prose mx-auto">
-                <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+              </dl>
+              <div>
+                <PageTitle>{post.title}</PageTitle>
               </div>
             </div>
-          </article>
-        </main>
+          </header>
+          <div className="mt-12">
+            <div className="prose m-auto">
+              <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+            </div>
+          </div>
+        </article>
       </SectionContainer>
     </>
   );

@@ -7,10 +7,16 @@ export type Tech = {
 export type Post = {
   image: string;
   excerpt: string;
+  description: string;
   coverImage: string;
   title: string;
   path: string;
   date: string;
+  content: string;
+};
+
+export type ContentPost = {
+  metadata: Post;
   content: string;
 };
 

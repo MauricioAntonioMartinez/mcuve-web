@@ -13,7 +13,7 @@ const PostsPage = ({
   const router = useRouter();
   return (
     <section css={xw`container space-y-10 p-8`}>
-      <h1 css={xw`text-4xl `}>Learning and documenting my journey</h1>
+      <h1 css={xw`text-4xl `}>Learning and documenting my journey.</h1>
       <article>
         {posts.length > 0 && (
           <MainPost
@@ -22,9 +22,9 @@ const PostsPage = ({
           />
         )}
         <div css={xw`mt-3 grid-cols-3`}>
-          {posts.map((p) => {
-            return <PostItem post={p} onClick={() => router.push(p.path)} />;
-          })}
+          {posts.map((p) => (
+            <PostItem post={p} onClick={() => router.push(p.path)} />
+          ))}
         </div>
       </article>
     </section>

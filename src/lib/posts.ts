@@ -2,9 +2,9 @@ import fs from "fs";
 import gray from "gray-matter";
 import { GetStaticProps } from "next";
 import path from "path";
-import { Post } from "../types";
+import { ContentPost, Post } from "../types";
 
-export const postsPath = path.join(process.cwd(), "posts");
+export const POSTS_PATH = path.join(process.cwd(), "posts");
 
 // TODO: this thing does not work properly
 const getPostUrls = (fatherPath: string, files = [] as string[]): string => {
@@ -20,33 +20,34 @@ const getPostUrls = (fatherPath: string, files = [] as string[]): string => {
 };
 
 export const getPaths = () => {
-  const urls = getPostUrls(postsPath).split(" ");
-  return urls.map((url) => url.replace(postsPath, "").replace(".md", ""));
+  const urls = getPostUrls(POSTS_PATH).split(" ");
+  return urls.map((url) => url.replace(POSTS_PATH, "").replace(".mdx", ""));
 };
 
 export const getAllPosts = () => {
   const paths = getPaths();
   const posts = paths.map((p) => {
-    const content = fs.readFileSync(path.join(postsPath, `${p}.md`), "utf-8");
+    const content = fs.readFileSync(path.join(POSTS_PATH, `${p}.md`), "utf-8");
     const post = gray(content);
     return { ...post.data, content: post.content } as Post;
   });
   return posts;
 };
 
-export const getContentPost = (slugs: string[]) => {
+export const getContentPost = (slugs: string[], locale?: string) => {
+  console.log(`Locale ${locale}`);
   const content = fs.readFileSync(
     path.join(
       ...[
-        postsPath as string,
+        POSTS_PATH as string,
         ...slugs.slice(0, slugs.length - 1),
-        slugs[slugs.length - 1] + ".md",
+        slugs[slugs.length - 1] + ".mdx",
       ]
     ),
     "utf-8"
   );
   const post = gray(content);
-  return { ...post.data, content: post.content } as Post;
+  return { metadata: post.data, content: post.content } as ContentPost;
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {

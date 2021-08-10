@@ -7,7 +7,7 @@ interface Props {}
 export const Menu = (props: Props) => {
   return (
     <ul css={xw`flex space-x-4`}>
-      {/* <MenuItem path="/blog" label="Blog" /> */}
+      <MenuItem path="/blog" label="Blog" />
       <MenuItem path="/about-me" label="About me" />
       <MenuItem path="/projects" label="Projects" />
     </ul>

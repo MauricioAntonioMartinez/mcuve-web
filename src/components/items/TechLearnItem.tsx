@@ -14,8 +14,9 @@ export const TechLearnItem = ({ tech, title }: Props) => {
       <div>
         <h2 css={xw`text-gray-800 text-3xl font-semibold mb-4`}>{title}</h2>
         <div css={xw`flex`}>
-          {tech.map((t) => (
+          {tech.map((t, i) => (
             <a
+              key={`tech-${i}`}
               href={t.url}
               target="_blank"
               rel="noopener noreferrer"
