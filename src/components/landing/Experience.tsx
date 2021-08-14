@@ -73,7 +73,7 @@ export const ExperienceView = ({ events }: Props) => {
         <div css={xw`w-full bg-black h-6 mb-4`}></div>
 
         {YEARS.map((y) => (
-          <>
+          <div key={`year-${y}`}>
             <h1 css={xw`italic text-4xl font-bold`}>{y}</h1>
             <div css={xw`flex flex-col py-2 space-y-3  items-center`}>
               {MONTHS.slice(
@@ -85,7 +85,7 @@ export const ExperienceView = ({ events }: Props) => {
                 </span>
               ))}
             </div>
-          </>
+          </div>
         ))}
         <div
           css={xw`absolute w-24 bg-primary h-24 transform rotate-45 -bottom-16 border-b-2 border-r-2 border-warning z-10`}

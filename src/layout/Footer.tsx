@@ -37,7 +37,10 @@ export const Footer = (props: Props) => {
         </div>
         {extraResources.map((res) => {
           return (
-            <div css={xw`flex flex-col  space-y-3`}>
+            <div
+              css={xw`flex flex-col  space-y-3`}
+              key={`footer-item-${res.title}`}
+            >
               <h1 css={xw`text-4xl `}>{res.title}</h1>
               <ul>
                 {res.links.map((l) => (

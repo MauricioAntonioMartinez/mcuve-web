@@ -27,9 +27,9 @@ export const getPaths = () => {
 export const getAllPosts = () => {
   const paths = getPaths();
   const posts = paths.map((p) => {
-    const content = fs.readFileSync(path.join(POSTS_PATH, `${p}.md`), "utf-8");
+    const content = fs.readFileSync(path.join(POSTS_PATH, `${p}.mdx`), "utf-8");
     const post = gray(content);
-    return { ...post.data, content: post.content } as Post;
+    return { ...post.data, path: `/blog${p}`, content: post.content } as Post;
   });
   return posts;
 };

@@ -11,7 +11,10 @@ export const Certifications = (props: Props) => {
   return (
     <section css={xw`flex justify-center items-center pb-8`}>
       {props.certifications.map((c) => (
-        <CertificationItem certification={c} />
+        <CertificationItem
+          certification={c}
+          key={`Certifications-${c.title}`}
+        />
       ))}
     </section>
   );

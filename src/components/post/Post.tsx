@@ -16,7 +16,7 @@ interface Props {
 export const mdxComponents: MDXProviderComponentsProp = {
   pre: ({ className, ...props }) => (
     <pre
-      className={`${className} rounded-md bg-gray-800 py-3 px-4 overflow-x-auto`}
+      className={`${className} rounded-md bg-gray-500 py-3 px-4 overflow-x-auto`}
       {...props}
     />
   ),

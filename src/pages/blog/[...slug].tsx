@@ -1,3 +1,7 @@
+import { CodeBlock } from "@/components/items/CodeBlock";
+import { PageTitle } from "@/components/post/PageTitle";
+import { Header } from "@/components/ui/Header";
+import { McuveIcon } from "@/components/ui/McuveIcon";
 import { PostLayout } from "@/layout/PostLayout";
 import { getContentPost, getPaths } from "@/lib/posts";
 import { Post } from "@/types";
@@ -8,6 +12,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
+import tinytime from "tinytime";
+import xw from "xwind";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -16,16 +22,10 @@ type Props = {
 
 const components = {};
 
+const postDateTemplate = tinytime("{dddd}, {MMMM} {DD}, {YYYY}");
+
 export const mdxComponents: MDXProviderComponentsProp = {
-  pre: ({ className, ...props }) => (
-    <pre
-      className={`${className} rounded-md bg-gray-300 py-3 px-4 overflow-x-auto`}
-      {...props}
-    />
-  ),
-  code: ({ className, ...props }: any) => (
-    <code className={`${className} text-gray-500`} {...props} />
-  ),
+  code: CodeBlock,
 };
 
 const PostPage: React.FC<Props> = ({ source, metadata }: Props) => {
@@ -33,7 +33,7 @@ const PostPage: React.FC<Props> = ({ source, metadata }: Props) => {
   const lang = router.locale;
 
   //   const ogImage = SITE_URL + metadata.thumbnail;
-  console.log(source);
+  console.log(metadata);
   return (
     <PostLayout title={metadata.title}>
       <Head>
@@ -47,23 +47,38 @@ const PostPage: React.FC<Props> = ({ source, metadata }: Props) => {
           content={metadata.description}
           key="ogDescription"
         />
-        {/* <meta property="og:image" content={ogImage} key="ogImage" /> */}
+        <meta property="og:image" content="" key="ogImage" />
+        <title>{metadata.title}</title>
       </Head>
 
-      <article className="prose prose-green dark:prose-dark m-auto">
-        <div className="mb-4">
-          {/* <Thumbnail title={metadata.title} src={metadata.thumbnail} /> */}
+      <header className="pt-6 xl:pb-10">
+        <div
+          css={xw`space-y-1 text-center flex flex-col items-center justify-center`}
+        >
+          <McuveIcon />
+          <dl className="space-y-10">
+            <div>
+              <dt className="sr-only">Published on</dt>
+              <dd className="text-base leading-6 font-medium text-gray-500">
+                <time dateTime={metadata.date}>
+                  {postDateTemplate.render(new Date(metadata.date))}
+                </time>
+              </dd>
+            </div>
+          </dl>
+          <div>
+            <PageTitle>{metadata.title}</PageTitle>
+          </div>
         </div>
+      </header>
 
-        <h1>{metadata.title}</h1>
+      <Header
+        title={metadata.title}
+        subtitle={metadata.excerpt}
+        image="/assets/cover-posts.jpg"
+      />
 
-        <p className="font-bold">
-          {lang === "ja" ? "分量：" : "Yields: "}
-          {/* {metadata.yields} */}
-        </p>
-
-        {/* <p>{metadata.description}</p> */}
-
+      <article className="max-w-2xl m-auto mt-10">
         <MDXRemote {...source} components={mdxComponents} />
       </article>
     </PostLayout>
