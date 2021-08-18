@@ -20,12 +20,35 @@ type Props = {
   metadata: Omit<Post, "slug">;
 };
 
-const components = {};
-
 const postDateTemplate = tinytime("{dddd}, {MMMM} {DD}, {YYYY}");
 
 export const mdxComponents: MDXProviderComponentsProp = {
   code: CodeBlock,
+  h1: (props: any) => <h1 css={xw`text-2xl`}>{props.children}</h1>,
+  h2: (props: any) => <h1 css={xw`text-3xl text-primary`}>{props.children}</h1>,
+  a: ({ children }: any) => (
+    <a css={xw`bg-white text-blue-400 font-bold underline cursor-pointer p-0`}>
+      {children}
+    </a>
+  ),
+  p: (props: { children: React.ReactNodeArray }) => {
+    if (!Array.isArray(props.children)) {
+      return <p>{props.children}</p>;
+    }
+
+    return (
+      <div css={xw`inline leading-relaxed`}>
+        {props.children.map((c) =>
+          typeof c === "string" ? (
+            <p css={xw`text-xl inline`}>{c}</p>
+          ) : (
+            <p css={xw`bg-black text-white inline  rounded mx-1`}>{c}</p>
+          )
+        )}
+      </div>
+    );
+  },
+  hr: () => <div css={xw`h-2`}></div>,
 };
 
 const PostPage: React.FC<Props> = ({ source, metadata }: Props) => {
@@ -33,7 +56,6 @@ const PostPage: React.FC<Props> = ({ source, metadata }: Props) => {
   const lang = router.locale;
 
   //   const ogImage = SITE_URL + metadata.thumbnail;
-  console.log(metadata);
   return (
     <PostLayout title={metadata.title}>
       <Head>

@@ -6,7 +6,8 @@ interface Props {
 }
 
 export const CodeBlock: React.FC<Props> = ({ className, children }) => {
-  const language = className.replace(/language-/, "") as Language;
+  const language = (className?.replace(/language-/, "") ||
+    "javascript") as Language;
 
   return (
     <Highlight {...defaultProps} code={children as string} language={language}>
